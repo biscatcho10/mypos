@@ -26,6 +26,21 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto-navbav">
+
+        <!-- language -->
+        <a href="#" class="dropdown-toggle mt-1 text-decoration-none" data-toggle="dropdown"><i class="fas fa-globe-americas    "></i> </a>
+        <ul class="dropdown-menu">
+            <ul class="todo-list">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" class="text-decoration-none">
+                            {{ $properties['native'] }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </ul>
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
