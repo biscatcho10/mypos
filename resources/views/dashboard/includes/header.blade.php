@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-dark navbar-gray-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -28,7 +28,7 @@
     <ul class="navbar-nav mr-auto-navbav">
 
         <!-- language -->
-        <a href="#" class="dropdown-toggle mt-1 text-decoration-none" data-toggle="dropdown"><i class="fas fa-globe-americas    "></i> </a>
+        <a href="#" class="dropdown-toggle mt-1 text-decoration-none" data-toggle="dropdown"><i class="fas fa-globe-americas"></i> </a>
         <ul class="dropdown-menu">
             <ul class="todo-list">
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
