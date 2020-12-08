@@ -103,20 +103,53 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if (auth()->user()->isAbleTo('users_read'))
+                        @if (auth()->user()->isAbleTo('clients_read'))
                         <li class="nav-item">
-                            <a href="{{route('users.index')}}" class="nav-link">
+                            <a href="{{route('clients.index')}}" class="nav-link">
                                 <i class="fa fa-minus ml-1" aria-hidden="true"></i>
                                 <p>All Users</p>
                             </a>
                         </li>
                         @endif
 
-                        @if (Auth::user()->hasPermission('users_create'))
+                        @if (Auth::user()->hasPermission('clients_create'))
                         <li class="nav-item">
-                            <a href="{{route('users.create')}}" class="nav-link">
+                            <a href="{{route('clients.create')}}" class="nav-link">
                                 <i class="fa fa-minus ml-1" aria-hidden="true"></i>
                                 <p>Add Users</p>
+                            </a>
+                        </li>
+                        @endif
+
+                    </ul>
+                </li>
+
+                {{-- Clients --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        {{-- <i class="nav-icon fas fa-copy"></i> --}}
+                        <span><i class="fa fa-users-cog" aria-hidden="true"></i></span>
+                        <p>
+                            Clients
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">{{App\Models\Client::count()}}</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @if (auth()->user()->isAbleTo('clients_read'))
+                        <li class="nav-item">
+                            <a href="{{route('clients.index')}}" class="nav-link">
+                                <i class="fa fa-minus ml-1" aria-hidden="true"></i>
+                                <p>All Clients</p>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if (Auth::user()->hasPermission('clients_create'))
+                        <li class="nav-item">
+                            <a href="{{route('clients.create')}}" class="nav-link">
+                                <i class="fa fa-minus ml-1" aria-hidden="true"></i>
+                                <p>Add Clients</p>
                             </a>
                         </li>
                         @endif

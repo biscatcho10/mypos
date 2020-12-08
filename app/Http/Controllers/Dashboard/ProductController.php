@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\Validation\Rule;
-
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 

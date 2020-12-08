@@ -16,10 +16,13 @@ Route::group(
             // Users Routes
             Route::resource('users', 'UserController')->except(['show']);
 
+            // Clients Routes
+            Route::resource('clients', 'ClientController')->except(['show']);
+
             // Categories Routes
             Route::resource('categories', 'CategoryController')->except(['show']);
 
-            // Categories Routes
+            // Products Routes
             Route::resource('products', 'ProductController')->except(['show']);
             Route::get('related-products/{id}', 'ProductController@related')->name('related-productd');
 
