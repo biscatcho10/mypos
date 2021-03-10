@@ -58,7 +58,8 @@
                             <th><i class="fa fa-dot-circle" aria-hidden="true"></i></th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>address</th>
+                            <th>Address</th>
+                            <th>Add Order </th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -70,6 +71,13 @@
                                 <td> {{$client->name}} </td>
                                 <td> {{$client->phone}} </td>
                                 <td> {{$client->address}} </td>
+                                <td>
+                                    @if (auth()->user()->isAbleTo('orders_read'))
+                                        <a href="{{route('clients.orders.create', $client->id)}}" class="btn btn-primary btn-sm"> Add Order </a>
+                                    @else
+                                        <a href="" class="btn btn-primary btn-sm disabled"> Add Order </a>
+                                    @endif
+                                </td>
                                 <td>
 
                                     @if (Auth::user()->hasPermission('users_update'))

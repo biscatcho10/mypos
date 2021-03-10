@@ -59,7 +59,9 @@
                     </ul>
                 </li>
 
-                {{-- Categories --}}
+
+
+                {{-- Products --}}
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -103,18 +105,18 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @if (auth()->user()->isAbleTo('clients_read'))
+                        @if (auth()->user()->isAbleTo('users_read'))
                         <li class="nav-item">
-                            <a href="{{route('clients.index')}}" class="nav-link">
+                            <a href="{{route('users.index')}}" class="nav-link">
                                 <i class="fa fa-minus ml-1" aria-hidden="true"></i>
                                 <p>All Users</p>
                             </a>
                         </li>
                         @endif
 
-                        @if (Auth::user()->hasPermission('clients_create'))
+                        @if (Auth::user()->hasPermission('users_create'))
                         <li class="nav-item">
-                            <a href="{{route('clients.create')}}" class="nav-link">
+                            <a href="{{route('users.create')}}" class="nav-link">
                                 <i class="fa fa-minus ml-1" aria-hidden="true"></i>
                                 <p>Add Users</p>
                             </a>

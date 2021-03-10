@@ -88,14 +88,12 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <img src=" {{asset('storage/images/Users/avatar.png')}} " width="120px" class="img-thumbnail round image-preview">
-                    </div>
+
 
                     <div class="form-group">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             @php
-                                $models = ['users', 'categories', 'products'];
+                                $models = ['users', 'categories', 'products', 'clients', 'orders'];
                                 $maps = ['create', 'read', 'update', 'delete'];
                             @endphp
                             @foreach ($models as $index => $model)

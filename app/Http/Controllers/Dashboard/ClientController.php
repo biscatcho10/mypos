@@ -50,4 +50,10 @@ class ClientController extends Controller
         $client->update($request->except('_token'));
         return redirect()->route('clients.index')->with(['success', 'The Client Updated Successfully']);
     }
+
+    public function destroy(Client $client)
+    {
+        $client->delete();
+        return redirect()->route('clients.index')->with(['success' => 'The Category Deleted Successfully']);
+    }
 }
