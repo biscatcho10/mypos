@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $filable = ['client_id', 'total_price'];
+    protected $fillable = ['client_id', 'total_price'];
 
     public function client()
     {
@@ -17,6 +17,6 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'product_order')->withPivot('quantity');
-
     }
+
 }

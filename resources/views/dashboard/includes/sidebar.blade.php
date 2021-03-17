@@ -159,6 +159,38 @@
                     </ul>
                 </li>
 
+                {{-- Orders --}}
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                        <p>
+                            Orders
+                            <i class="fas fa-angle-left right"></i>
+                            <span class="badge badge-info right">{{App\Models\Order::count()}}</span>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @if (auth()->user()->isAbleTo('orders_read'))
+                        <li class="nav-item">
+                            <a href="{{route('orders.index')}}" class="nav-link">
+                                <i class="fa fa-minus ml-1" aria-hidden="true"></i>
+                                <p>All Orders</p>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if (Auth::user()->hasPermission('orders_create'))
+                        <li class="nav-item">
+                            <a href="{{route('orders.create')}}" class="nav-link">
+                                <i class="fa fa-minus ml-1" aria-hidden="true"></i>
+                                <p>Add Orders</p>
+                            </a>
+                        </li>
+                        @endif
+
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

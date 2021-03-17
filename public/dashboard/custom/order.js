@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Add Product To The List
-    $(".add-product-btn").click(function(e) {
+    $("body").on("click", ".add-product-btn", function(e) {
         e.preventDefault();
 
         var id = $(this).data("id");
@@ -10,7 +10,7 @@ $(document).ready(function() {
         var html = `
         <tr>
             <td>${name}</td>
-            <td> <input type="number" name="quantities[]" data-price="${price}" class="form-control prod-quan" min="1" value="1"> </td>
+            <td> <input type="number" name="products[${id}][quantity]" data-price="${price}" class="form-control prod-quan" min="1" value="1"> </td>
             <td class="prod-price">${price}</td>
             <td>
                 <button type="button" id="product-${id}"  data-id="${id}"  class="btn btn-danger btn-sm remove-product-button">
@@ -65,9 +65,34 @@ $(document).ready(function() {
     });
 
     // Stop Action Of Disabled Button
-    $(".disabled").click(function (e) {
+    $(".disabled").click(function(e) {
+        e.preventDefault();
+    });
+
+    // Show Order products
+    $("body").on("click", ".order-products", function (e) {
         e.preventDefault();
 
+        $("#loading").css("display", "flex");
+
+        var url = $(this).data('url');
+        var method = $(this).data('method');
+
+        $.ajax({
+            type: method,
+            url: url,
+            success: function (data) {
+                $("#loading").css("display", "none");
+                $("#order-product-list").empty();
+                $("#order-product-list").append(data);
+            }
+        });
+
+    });
+
+    // print order
+    $("body").on("click", ".print-btn", function () {
+        $("#print-area").printThis();
     });
 });
 
@@ -80,10 +105,9 @@ function calucTotal() {
 
     $(".total-price").html(price);
 
-    if(price > 0)
-    {
+    if (price > 0) {
         $("#add-order-form-btn").removeClass("disabled");
-    }else{
+    } else {
         $("#add-order-form-btn").addClass("disabled");
     }
 }

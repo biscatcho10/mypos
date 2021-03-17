@@ -128,8 +128,13 @@
 
                                     <h4>Totel : <span class="total-price">0</span></h4>
 
-                                    <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i
-                                            class="fa fa-plus"></i> Add Order</button>
+                                    {{-- <button type="submit" class="btn btn-primary btn-block disabled" id="add-order-form-btn">
+                                        <i class="fa fa-plus"></i> Add Order
+                                    </button> --}}
+
+                                    <button type="submit" class="btn btn-primary btn-block" id="add-order-form-btn">
+                                        <i class="fa fa-plus"></i> Add Order
+                                    </button>
 
                                 </form>
 
@@ -152,39 +157,25 @@
                             <div class="card-body">
 
                                 @foreach ($orders as $order)
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card">
+                                        <div class="card-header" id="{{$order->id}}">
+                                            <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#{{'collapseOne'.$order->id}}" aria-expanded="true" aria-controls="collapseOne">
+                                                {{ $order->created_at->toFormattedDateString() }}
+                                            </button>
+                                            </h2>
+                                        </div>
 
-                                    <div class="panel-group">
-
-                                        <div class="panel panel-success">
-
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse"
-                                                        href="#{{ $order->created_at->format('d-m-Y-s') }}">
-                                                        {{ $order->created_at->toFormattedDateString() }}
-                                                    </a>
-                                                </h4>
+                                        <div id="{{'collapseOne'.$order->id}}" class="collapse" aria-labelledby="{{ $order->id}}" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                @foreach ($order->products as $product)
+                                                    <li class="list-group-item">{{ $product->name }}</li>
+                                                @endforeach
                                             </div>
-
-                                            <div id="{{ $order->created_at->format('d-m-Y-s') }}"
-                                                class="panel-collapse collapse">
-
-                                                <div class="panel-body">
-
-                                                    <ul class="list-group">
-                                                        @foreach ($order->products as $product)
-                                                            <li class="list-group-item">{{ $product->name }}</li>
-                                                        @endforeach
-                                                    </ul>
-
-                                                </div><!-- end of panel body -->
-
-                                            </div><!-- end of panel collapse -->
-
-                                        </div><!-- end of panel primary -->
-
-                                    </div><!-- end of panel group -->
-
+                                        </div>
+                                        </div>
+                                    </div>
                                 @endforeach
 
                                 {{ $orders->links() }}

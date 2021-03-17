@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\OrderController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -26,6 +27,10 @@ Route::group(
             // Products Routes
             Route::resource('products', 'ProductController')->except(['show']);
             Route::get('related-products/{id}', 'ProductController@related')->name('related-productd');
+
+            // Orders Routes
+            Route::resource('orders', 'OrderController');
+            Route::get('orders/{order}/products', 'OrderController@products')->name('orders.products');
 
         });
     });

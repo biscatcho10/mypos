@@ -11,6 +11,10 @@ class Client extends Model
     public function orders()
     {
         return $this->hasMany(Order::class);
+    } //end of orders
 
-    }//end of orders
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }
