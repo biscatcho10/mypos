@@ -166,6 +166,8 @@
     <script src="{{ asset('dashboard/custom/image_preview.js') }}"></script>
     <script src="{{ asset('dashboard/custom/order.js') }}"></script>
 
+    @stack('js')
+
 </body>
 
 </html>

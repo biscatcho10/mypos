@@ -181,7 +181,7 @@
 
                         @if (Auth::user()->hasPermission('orders_create'))
                         <li class="nav-item">
-                            <a href="{{route('orders.create')}}" class="nav-link">
+                            <a href="{{route('clients.index')}}" class="nav-link">
                                 <i class="fa fa-minus ml-1" aria-hidden="true"></i>
                                 <p>Add Orders</p>
                             </a>
